@@ -1,5 +1,8 @@
 /* eslint-disable linebreak-style */
 
+import ArticleSource from '../../data/article-source';
+import '../component/article-list';
+
 const Home = {
   async render() {
     return `
@@ -8,7 +11,15 @@ const Home = {
   },
 
   async afterRender() {
-    console.log('Home Page');
+    const mainContent = document.querySelector('#mainContent');
+
+    try {
+      const articles = await ArticleSource.articleList();
+      mainContent.innerHTML = '<article-list></article-list>';
+      document.querySelector('article-list').articles = articles;
+    } catch (e) {
+      console.log(e);
+    }
   },
 };
 

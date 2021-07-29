@@ -3,9 +3,9 @@
 import 'regenerator-runtime';
 import '../styles/main.scss';
 import App from './views/app';
+import './views/component/app-bar';
+import './views/component/footer-component';
 
-const menuButton = document.querySelector('#menuButton');
-const navbar = document.querySelector('#navbar');
 const mainContent = document.querySelector('#mainContent');
 
 const app = new App({
@@ -18,14 +18,4 @@ window.addEventListener('hashchange', () => {
 
 window.addEventListener('load', () => {
   app.renderPage();
-});
-
-menuButton.addEventListener('click', (event) => {
-  navbar.classList.toggle('open');
-  event.stopPropagation();
-});
-
-document.body.addEventListener('click', (event) => {
-  navbar.classList.remove('open');
-  event.stopPropagation();
 });
